@@ -2,7 +2,7 @@
 ------INCREMENT 1
                      TEAM 21: TECHIE
                      
-Brahmani Kanikanti----------58
+Brahmani Kanikanti----------38
 Tejaswini Pulivarthi--------78
 Lakshmi Monica Nadakuditi---55
 Bhavesh Veeramachineni------90
