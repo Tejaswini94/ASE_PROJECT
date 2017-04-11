@@ -194,6 +194,7 @@
 
                     </table>
                 </div>
+        <div><button class="btn btn-primary" onclick="OpenPopupCenter('popup.html', 'TEST!?', 600, 400);">GetNutirition</button></div>
 </Center>
 </div>
 <div id="GYM" class="tabcontent" data-ng-controller="FoodCalorie" style="background-color:#F7F7F7;">
@@ -476,7 +477,14 @@ app.controller('FoodCalorie', function ($scope,$http) {
 });
 </script>
 
-
+<script language="javascript" type="text/javascript">
+    function OpenPopupCenter(pageURL, title, w, h) {
+        alert("hi");
+        var left = (screen.width - w) / 2;
+        var top = (screen.height - h) / 4;  // for 25% - devide by 4  |  for 33% - devide by 3
+        var targetWin = window.open('popup.html', title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+    }
+</script>
 
 <style>
     #btn {
