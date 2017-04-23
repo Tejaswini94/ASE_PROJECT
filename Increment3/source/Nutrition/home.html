@@ -15,9 +15,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
 
+    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 
 <style>
@@ -194,26 +196,11 @@
 
                     </table>
                 </div>
-        <div><button class="btn btn-primary" onclick="OpenPopupCenter('popup.html', 'TEST!?', 600, 400);">GetNutirition</button></div>
+        <div>
+            <button name="search4" class="btn btn-primary" data-ng-click="getNutrition4()">GetNutrition</button>
+        </div>
+
 </Center>
-</div>
-<div id="GYM" class="tabcontent" data-ng-controller="FoodCalorie" style="background-color:#F7F7F7;">
-
-    <div class="menu" id="div_SearchContainer">
-        <h1 align="absolute" style="text-align: center; color: #5cb85c">Search for the GYM's  near by</h1>
-        <input type="text" id="txt_placeName" placeholder="Enter the place you want to search" style="margin-left: 400px ;margin-right:20px;"/>
-        <button id="btn_getReview" ng-click="getVenues()">Get Venues</button>
-    </div>
-    <div id="div_VenueList">
-        <img src="https://d13yacurqjgara.cloudfront.net/users/576057/screenshots/2367607/48_animations_dribbble.gif" id="img2"border="0" alt="activity" height="300" width="410" style="padding-top:70px;margin-left:450px;"  />
-
-        <ul>
-            <li ng-repeat="x in results" style="font-size: 23px; color: #000; text-align: center; list-style: none; list-style-position:inside;">
-
-            </li>
-        </ul>
-
-    </div>
 </div>
 
 <div id="Tokyo" class="tabcontent" data-ng-controller="FoodCalorie">
@@ -295,14 +282,113 @@
     </div>
 </div>
 <div id="Recepie" class="tabcontent" data-ng-controller="FoodCalorie">
-   <div>
-       <input type="text" name="recepie" placeholder="Enter Recepie.." data-ng-model="recepie">
-       <button name="recepie" data-ng-click="getRecepies()">Search</button>
-       <p>{{label}}</p>
-       <li data-ng-repeat="x in label1">{{x}}</li>
-      <p>calories:{{label2}}</p>
-       <img src="{{label3}}">
-   </div>
+    <center>
+        <div ><h1 class="text-center" style="color: #496ebc"> SEARCH FOR A RECIPE </h1></div><br><BR>
+        <div>
+            <div class="form-inline" >
+                <input type="text" style="width:400px;" class="form-control" name="recepie" placeholder="Enter an item.." data-ng-model="recepie">
+                <button name="recepie" class="btn btn-primary" style="width:250px;" data-ng-click="getRecepies()">Search</button>
+            </div> <div><br><br>
+
+            <div class="row">
+                <div class="col-sm-5">
+                    <h2 style="color:#d9534f;">{{label[0]}}</h2></div>
+                <div class="col-sm-5"> <h3 id="l1" style="color:#5cb85c;display:none;">Calories:{{label2[0]}}</h3>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <h4 id="l2" style="color:#428bca;display:none;">INGREDIENTS</h4>
+                    <li style="center:none;" data-ng-repeat="x in label1[0]">{{x}}</li><br>
+                    <h4>  <a href="{{label4[0]}}" id="l3" style="display:none;">Instructions For Recipe</a></h4></div>
+
+                <div class="col-sm-5">     <img class="img-responsive"  width="270" height="230"; src="{{label3[0]}}"></div>
+            </div>
+        </div><br><br>
+            <div>
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2 style="color:#d9534f;">{{label[1]}}</h2></div>
+                    <div class="col-sm-5"> <h3 id="l4" style="color:#5cb85c;display:none">Calories:{{label2[1]}}</h3>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h4 id="l5" style="color:#428bca;display:none;"> INGREDIENTS</h4> <li data-ng-repeat="x in label1[1]">{{x}}</li><br>
+                        <h4>  <a href="{{label4[1]}}" id="l6" style="display:none;">Instructions For Recipe</a></h4></div>
+
+
+                    <div class="col-sm-5">     <img class="img-responsive"  width="270" height="230"; src="{{label3[1]}}"></div>
+                </div>
+            </div> <br><br>
+            <div>
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2 style="color:#d9534f;">{{label[2]}}</h2></div>
+                    <div class="col-sm-5"> <h3 id="l7" style="color:#5cb85c;display:none">Calories:{{label2[2]}}</h3>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h4 id="l8" style="color:#428bca;display:none;"> INGREDIENTS</h4> <li data-ng-repeat="x in label1[2]">{{x}}</li><br>
+                        <h4>  <a href="{{label4[2]}}"id="l9" style="display:none;">Instructions For Recipe</a></h4></div>
+
+
+                    <div class="col-sm-5">     <img class="img-responsive"  width="270" height="230"; src="{{label3[2]}}"></div>
+                </div>
+            </div>
+            <div>
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2 style="color:#d9534f;">{{label[3]}}</h2></div>
+                    <div class="col-sm-5"> <h3 id="l10" style="color:#5cb85c;display:none">Calories:{{label2[3]}}</h3>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h4 id="l11" style="color:#428bca;display: none;"> INGREDIENTS</h4> <li data-ng-repeat="x in label1[3]">{{x}}</li><br>
+                        <h4>  <a href="{{label4[3]}}" id="l12" style="display:none";>Instructions For Recipe</a></h4></div>
+
+
+                    <div class="col-sm-5">     <img class="img-responsive"  width="270" height="230"; src="{{label3[3]}}"></div>
+                </div>
+            </div> <br><br>
+
+        </div>
+
+
+
+
+        <br><br><br><br><br><br><br>
+
+    </center>
+
+
+</div>
+<div id="GYM" class="tabcontent" data-ng-controller="FoodCalorie" style="background-color:#F7F7F7;">
+
+    <div class="menu" id="div_SearchContainer">
+        <h1 align="absolute" style="text-align: center; color: #5cb85c">Search for the GYM's  near by</h1>
+        <input type="text" id="txt_placeName" placeholder="Enter the place you want to search" style="margin-left: 400px ;margin-right:20px;"/>
+        <button id="btn_getReview" ng-click="getVenues()">Get Venues</button>
+    </div>
+    <div id="div_VenueList">
+        <img src="https://d13yacurqjgara.cloudfront.net/users/576057/screenshots/2367607/48_animations_dribbble.gif" id="img2"border="0" alt="activity" height="300" width="410" style="padding-top:70px;margin-left:450px;"  />
+
+        <ul>
+            <li ng-repeat="x in results" style="font-size: 23px; color: #000; text-align: center; list-style: none; list-style-position:inside;">
+
+            </li>
+        </ul>
+
+    </div>
 </div>
 
 <script>
@@ -389,7 +475,36 @@ app.controller('FoodCalorie', function ($scope,$http) {
             });
         });
     };
+$scope.getNutrition4=function(){
 
+        var chart = new CanvasJS.Chart("chartContainer",
+            {
+                title:{
+                    text: "Gaming Consoles Sold in 2012"
+                },
+                legend: {
+                    maxWidth: 350,
+                    itemWidth: 120
+                },
+                data: [
+                    {
+                        type: "pie",
+                        showInLegend: true,
+                        legendText: "{indexLabel}",
+                        dataPoints: [
+                            { y: 4181563, indexLabel: "PlayStation 3" },
+                            { y: 2175498, indexLabel: "Wii" },
+                            { y: 3125844, indexLabel: "Xbox 360" },
+                            { y: 1176121, indexLabel: "Nintendo DS"},
+                            { y: 1727161, indexLabel: "PSP" },
+                            { y: 4303364, indexLabel: "Nintendo 3DS"},
+                            { y: 1717786, indexLabel: "PS Vita"}
+                        ]
+                    }
+                ]
+            });
+        chart.render();
+};
     $scope.getRecepies=function(){
         $http.get('https://api.edamam.com/search?q='+$scope.recepie+'&app_id=2ae886f0&app_key=947e59ea864049a4039e6588ee7afb9e&from=0&to=5').success(function (data) {
             console.log(data);
@@ -400,6 +515,42 @@ app.controller('FoodCalorie', function ($scope,$http) {
                 $scope.label2 = data.hits[i].recipe.calories;
                 $scope.label3 = data.hits[i].recipe.image;
             }
+        });
+
+
+    };
+    $scope.getRecepies=function(){
+        $http.get('https://api.edamam.com/search?q='+$scope.recepie+'&app_id=2ae886f0&app_key=947e59ea864049a4039e6588ee7afb9e&from=0&to=5').success(function (data) {
+            console.log(data);
+            $scope.label=new Array();
+            $scope.label1=new Array();
+            $scope.label2=new Array();
+            $scope.label3=new Array();
+            $scope.label4=new Array();
+            for(var i=0;i<4;i++) {
+                $scope.label[i] = data.hits[i].recipe.label;
+                $scope.label1[i] = data.hits[i].recipe.ingredientLines;
+                $scope.label2[i] = data.hits[i].recipe.calories;
+                $scope.label3[i] = data.hits[i].recipe.image;
+                $scope.label4[i] = data.hits[i].recipe.url;
+
+            }
+
+            document.getElementById("l1").style.display = 'block';
+            document.getElementById("l2").style.display = 'block';
+            document.getElementById("l3").style.display = 'block';
+            document.getElementById("l4").style.display = 'block';
+            document.getElementById("l5").style.display = 'block';
+            document.getElementById("l6").style.display = 'block';
+            document.getElementById("l7").style.display = 'block';
+            document.getElementById("l8").style.display = 'block';
+            document.getElementById("l9").style.display = 'block';
+            document.getElementById("l10").style.display = 'block';
+            document.getElementById("l11").style.display = 'block';
+            document.getElementById("l12").style.display = 'block';
+
+
+
         });
 
 
@@ -450,41 +601,11 @@ app.controller('FoodCalorie', function ($scope,$http) {
         document.getElementById("img1").src =src1;
         document.getElementById("img1").style.display = 'block'
     };
-    $scope.getVenues = function () {
-        var placeEntered = document.getElementById("txt_placeName").value;
-        alert(placeEntered);
-        {                alert("hello");
-            //This is the API that gives the list of venues based on the place and search query.
-            $http.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=39.0997265,-94.5785667&radius=500&type=gym&key=AIzaSyCNt-ShhFX0jz3fNOKF1D1XcEV-L6j18cI').success(function (data) {
-                alert(data.results[0].name);
-                if (data != null && data.results != null ) {
-                    for (var i = 0; i < 5; i++) {
 
-                        $scope.results[i] = {
-                            "name": data.results[i].name,
-
-                            "id": data.results[i].vicinity
-                        };
-                    }
-                }
-
-            })
-
-        }
-
-        document.getElementById("img2").style.display = 'none';
-    };
 });
 </script>
 
-<script language="javascript" type="text/javascript">
-    function OpenPopupCenter(pageURL, title, w, h) {
-        alert("hi");
-        var left = (screen.width - w) / 2;
-        var top = (screen.height - h) / 4;  // for 25% - devide by 4  |  for 33% - devide by 3
-        var targetWin = window.open('popup.html', title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
-    }
-</script>
+
 
 <style>
     #btn {
