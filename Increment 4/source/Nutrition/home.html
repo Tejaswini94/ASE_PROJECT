@@ -154,7 +154,7 @@
 <div id="lunch" class="tabcontent" data-ng-controller="FoodCalorie">
     <center>
         <div>
-            <h2 style="color:#428bca;" >Consumed Calories{{calories+calories1+calories2+calories3}}</h2>
+            <h2 style="color:#428bca;" >Consumed Calories &nbsp;{{calories+calories1+calories2+calories3}}</h2>
         </div>
         <div  class="panel panel-primary" style="width:800px;">
 
@@ -253,7 +253,7 @@
                     </table>
                 </div>
         <div>
-            <button name="search4" class="btn btn-primary" data-ng-click="getNutrition4()">GetNutrition</button>
+            <button name="search4" class="btn btn-primary" data-ng-click="OpenPopupCenter('popup.html', 'TEST!?', 600, 400)">GetNutrition</button>
         </div>
 
 </Center>
@@ -600,35 +600,11 @@ app.controller('FoodCalorie', function ($scope,$http) {
             });
         });
     };
-$scope.getNutrition4=function(){
+$scope.OpenPopupCenter=function(pageURL, title, w, h) {
+        var left = (screen.width - w) / 2;
+        var top = (screen.height - h) / 4;  // for 25% - devide by 4  |  for 33% - devide by 3
+        var targetWin = window.open('popup.html', title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 
-        var chart = new CanvasJS.Chart("chartContainer",
-            {
-                title:{
-                    text: "Gaming Consoles Sold in 2012"
-                },
-                legend: {
-                    maxWidth: 350,
-                    itemWidth: 120
-                },
-                data: [
-                    {
-                        type: "pie",
-                        showInLegend: true,
-                        legendText: "{indexLabel}",
-                        dataPoints: [
-                            { y: 4181563, indexLabel: "PlayStation 3" },
-                            { y: 2175498, indexLabel: "Wii" },
-                            { y: 3125844, indexLabel: "Xbox 360" },
-                            { y: 1176121, indexLabel: "Nintendo DS"},
-                            { y: 1727161, indexLabel: "PSP" },
-                            { y: 4303364, indexLabel: "Nintendo 3DS"},
-                            { y: 1717786, indexLabel: "PS Vita"}
-                        ]
-                    }
-                ]
-            });
-        chart.render();
 };
     $scope.getRecepies=function(){
         $http.get('https://api.edamam.com/search?q='+$scope.recepie+'&app_id=2ae886f0&app_key=947e59ea864049a4039e6588ee7afb9e&from=0&to=5').success(function (data) {
