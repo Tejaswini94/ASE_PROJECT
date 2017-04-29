@@ -2,7 +2,13 @@
 <html>
 
 <head>
-    <script type="text/javascript">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="home.js"></script>
+    <script>
+        var x=calories_from_fat3+calories_from_fat2+calories_from_fat1+nf_calories_from_fat;
+        var x1=total_carbohydrate+total_carbohydrate1+total_carbohydrate2+total_carbohydrate3;
+        var x2=protein+protein1+protein2+protein3;
         window.onload = function () {
             var chart = new CanvasJS.Chart("chartContainer",
                 {
@@ -18,7 +24,7 @@
                     theme: "theme1",
                     data: [
                         {
-                            type: "pie",
+                                type: "pie",
                             indexLabelFontFamily: "Garamond",
                             indexLabelFontSize: 20,
                             indexLabelFontWeight: "bold",
@@ -30,9 +36,9 @@
                             showInLegend: true,
                             indexLabel: "#percent%",
                             dataPoints: [
-                                {  y: 52, name: "Time At Work", legendMarkerType: "triangle"},
-                                {  y: 44, name: "Time At Home", legendMarkerType: "square"},
-                                {  y: 12, name: "Time Spent Out", legendMarkerType: "circle"}
+                                {  y: x/(x+x1+x2)*100, name: "Time At Work", legendMarkerType: "triangle"},
+                                {  y: x1/(x+x1+x2)*100, name: "Time At Home", legendMarkerType: "square"},
+                                {  y: x2/(x+x1+x2)*100 , name: "Time Spent Out", legendMarkerType: "circle"}
                             ]
                         }
                     ]
